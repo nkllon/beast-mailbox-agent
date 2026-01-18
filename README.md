@@ -50,14 +50,31 @@ pip install beast-mailbox-agent
 
 ## Usage
 
+Set the required environment variables and launch the runtime:
+
 ```bash
-# Start the agent
-beast-agent my-agent-id \
-  --redis-host vonnegut \
-  --redis-password beastmode2025 \
-  --llm-provider openai \
-  --llm-model gpt-4
+export BEAST_AGENT_ID=my-agent
+export BEAST_REDIS_URL=redis://localhost:6379/0
+export BEAST_OPENAI_API_KEY=sk-...
+
+# Run the agent until interrupted
+beast-agent run
+
+# Optional: verify connectivity upfront
+beast-agent healthcheck
 ```
+
+Additional options (model, temperature, concurrency, etc.) are configurable via
+environment variables documented in `src/beast_mailbox_agent/config.py`.
+
+Secrets such as `BEAST_REDIS_PASSWORD` or provider keys can be stored in
+`~/.env`; the agent loads that file automatically on startup.
+
+### Metrics
+
+- `BEAST_METRICS_BACKEND` (`logging` default, `prometheus` supported)
+- `BEAST_METRICS_PORT` (optional; when set and backend is `prometheus`, the agent
+  starts an HTTP endpoint for Prometheus scraping)
 
 ## Development Status
 
@@ -89,4 +106,3 @@ MIT
 ---
 
 **Built with ❤️ by AI agents**
-

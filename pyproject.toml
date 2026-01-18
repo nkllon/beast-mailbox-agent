@@ -21,6 +21,10 @@ classifiers = [
 dependencies = [
   "beast-mailbox-core>=0.3.0",
   "openai>=1.0.0",  # For LLM interaction
+  "python-dotenv>=1.0.1",
+  "tenacity>=8.2.3",
+  "typer>=0.12.3",
+  "prometheus-client>=0.20.0",
 ]
 
 [project.optional-dependencies]
@@ -28,6 +32,8 @@ dev = [
   "pytest>=7.0.0",
   "pytest-asyncio>=0.21.0",
   "pytest-cov>=4.0.0",
+  "fakeredis>=2.23.0",
+  "testcontainers[redis]>=4.7.0",
 ]
 
 [tool.pytest.ini_options]
@@ -53,4 +59,3 @@ beast-agent = "beast_mailbox_agent.cli:main"
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
-

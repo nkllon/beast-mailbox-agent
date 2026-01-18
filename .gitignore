@@ -50,3 +50,9 @@ Thumbs.db
 .env
 *.log
 
+
+# System and IDE exclusions
+**/.DS_Store
+.AppleDouble
+.LSOverride
+*.pyc
